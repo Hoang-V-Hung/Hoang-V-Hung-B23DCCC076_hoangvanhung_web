@@ -1,0 +1,76 @@
+
+
+
+.ToDoItem {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0; /* Màu viền nhẹ hơn */
+    transition: background-color 0.3s ease;
+}
+
+/* .ToDoItem:hover {
+    background-color: #f9f9f9; 
+} */
+
+.ItemContent {
+    margin-left: 10px;
+    flex-grow: 1; /* Cho phép nội dung mở rộng */
+}
+
+.ToDoItem .Title {
+    font-size: 16px; /* Tăng kích thước tiêu đề để dễ đọc hơn */
+    font-weight: bold; /* Làm tiêu đề nổi bật */
+    color: #333; /* Màu tối cho tiêu đề */
+    margin-bottom: 3px;
+}
+
+.ToDoItem .DueDate {
+    font-size: 12px;
+    color: #888; /* Màu xám nhẹ cho ngày tháng */
+}
+
+.ToDoItem .Action * {
+    margin-left: 10px; /* Tăng khoảng cách giữa các biểu tượng */
+    cursor: pointer;
+    color: #007bff;
+    transition: color 0.2s ease;
+}
+
+.ToDoItem .Action *:hover {
+    color: #0056b3; /* Đổi màu khi hover lên biểu tượng */
+}
+
+.ToDoItem input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.ToDoItem input[type="checkbox"]:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.ToDoItem input[type="checkbox"]:checked::before {
+    content: "\2713"; /* Biểu tượng dấu check */
+    color: white;
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ToDoItem input[type="checkbox"]:hover {
+    border-color: #000000; /* Đổi màu viền khi hover lên checkbox */
+}
+.ToDoItem.completed {
+    background-color: #c2c2c2; /* Example color when completed */
+  }
