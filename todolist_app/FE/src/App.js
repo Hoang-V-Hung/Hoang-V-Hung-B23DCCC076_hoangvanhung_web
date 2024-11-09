@@ -115,7 +115,7 @@ function App() {
       <div className="add-task">
         <input
           type="text"
-          placeholder="Add task"
+          placeholder="Thêm task"
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
         />
@@ -124,7 +124,7 @@ function App() {
           value={dueDate}
           onChange={(e) => setDueDate(e.target.value)}
         />
-        <button onClick={addTask}>Add task</button>
+        <button onClick={addTask}>Thêm task</button>
       </div>
     </div>
   );
