@@ -3,7 +3,7 @@ import React from 'react';
 function TodoItem({ 
   task, 
   onDelete, 
-  onToggleComplete,
+  onToggleComplete, 
   onStartEditing,
   isEditing,
   editText,
@@ -13,16 +13,9 @@ function TodoItem({
   onSaveEdit,
   onCancelEdit
 }) {
-  const handleDelete = (e) => {
-    e.stopPropagation();
-    if (window.confirm('Are you sure you want to delete this task?')) {
-      onDelete(task.id);
-    }
-  };
-
   if (isEditing) {
     return (
-      <li className="todo-item editing">
+      <div className="todo-item">
         <div className="todo-content">
           <input
             type="text"
@@ -41,31 +34,33 @@ function TodoItem({
             <button onClick={onCancelEdit} className="cancel-btn">Cancel</button>
           </div>
         </div>
-      </li>
+      </div>
     );
   }
 
   return (
-    <li className="todo-item">
+    <div className="todo-item">
       <div className="todo-content">
         <input
           type="checkbox"
-          checked={task.completed}
-          onChange={() => onToggleComplete(task.id)}
+          checked={task.completed || false}
+          onChange={() => onToggleComplete(task.id, task.completed)}
           className="todo-checkbox"
         />
         <div className="todo-text">
           <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
-            {task.text}
+            {task.title}
           </span>
-          <span className="due-date">{task.due}</span>
+          <span className="due-date">
+            {new Date(task.due_date).toLocaleDateString()}
+          </span>
         </div>
       </div>
       <div className="todo-actions">
         <button onClick={() => onStartEditing(task)} className="edit-btn">Edit</button>
-        <button onClick={handleDelete} className="delete-btn">Delete</button>
+        <button onClick={() => onDelete(task.id)} className="delete-btn">X</button>
       </div>
-    </li>
+    </div>
   );
 }
 
